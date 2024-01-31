@@ -3,10 +3,12 @@ class ExpenseTracker:
         self.expenses = {}
         self.balance = {}
 
+    
     def add_expense(self, payer, amount, participants):
         if payer not in self.balance:
             self.balance[payer] = 0
 
+        
         share = amount / len(participants)
         for participant in participants:
             if participant != payer:
@@ -19,11 +21,15 @@ class ExpenseTracker:
             self.expenses[payer] = []
         self.expenses[payer].append({"amount": amount, "participants": participants})
 
+
+    
     def print_balance(self):
         print("Balance:")
         for person, amount in self.balance.items():
             print(f"{person}: ${amount:.2f}")
 
+
+    
     def print_expenses(self):
         print("Expenses:")
         for payer, transactions in self.expenses.items():
@@ -31,6 +37,7 @@ class ExpenseTracker:
                 amount = transaction["amount"]
                 participants = ", ".join(transaction["participants"])
                 print(f"{payer} paid ${amount:.2f} for {participants}")
+
 
 def main():
     tracker = ExpenseTracker()
@@ -56,6 +63,8 @@ def main():
             break
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
+
+
 
 if __name__ == "__main__":
     main()
